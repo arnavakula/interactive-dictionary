@@ -2,6 +2,7 @@ import json
 from difflib import *
 
 data = json.load(open('data.json'))
+done = False
 
 def is_valid(word):
     return word in data 
@@ -25,7 +26,10 @@ def get_word():
         word = word.lower()
         first = word
 
-        if is_valid(first):
+        if word =='\end':
+            done = True
+            break
+        elif is_valid(first):
             break
         elif not is_valid(first) and has_alternative(first):
             word = handle_autocorrect(first)
@@ -35,12 +39,22 @@ def get_word():
         else: 
             break
        
-
     return word
 
 def print_def(word):
-    defs = data[word]
-    for d in defs:
-        print(d)
+    if word == '\end':
+        print()
+    else:
+        defs = data[word]
+        for d in defs:
+            print(d)
 
-print_def(get_word())
+def use_dict():
+    while True:
+        word = get_word()
+        if word == '\end':
+            break
+        else:
+            print_def(word)
+
+use_dict()
