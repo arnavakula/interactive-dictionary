@@ -23,14 +23,14 @@ def handle_autocorrect(word):
 def get_word():
     while True:
         word = str(input('Enter a word you would like to search up: '))
+        proper = word.title()
         word = word.lower()
         first = word
-
-        if word =='\end':
-            done = True
-            break
-        elif is_valid(first):
-            break
+        
+        if word =='\end' or is_valid(first):
+            return word
+        elif is_valid(proper):
+            return proper
         elif not is_valid(first) and has_alternative(first):
             word = handle_autocorrect(first)
             
