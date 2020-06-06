@@ -24,6 +24,7 @@ def get_word():
     while True:
         word = str(input('Enter a word you would like to search up: '))
         proper = word.title()
+        acronym = word.upper()
         word = word.lower()
         first = word
         
@@ -31,6 +32,8 @@ def get_word():
             return word
         elif is_valid(proper):
             return proper
+        elif is_valid(acronym):
+            return acronym
         elif not is_valid(first) and has_alternative(first):
             word = handle_autocorrect(first)
             
