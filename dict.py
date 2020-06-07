@@ -2,7 +2,6 @@ import json
 from difflib import *
 
 data = json.load(open('data.json'))
-done = False
 
 def is_valid(word):
     return word in data 
