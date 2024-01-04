@@ -30,9 +30,8 @@ def is_alternative(word):
 
 def get_valid_input():
     while True:
-        word = input("What word do you need the definition for? ").lower()
 
-        if word == '\end':
+        if (word := input("What word do you need the definition for? ").lower()) == '\end':
             return word
         elif normal(word) != False:
             return normal(word)
@@ -76,8 +75,7 @@ def print_defs(word):
 
 def use_dict():
     while True:
-        word = get_valid_input()
-        if word == '\end':
+        if (word := get_valid_input()) == '\end':
             break
         else:
             print_defs(word)

@@ -53,8 +53,7 @@ def print_def(word):
 
 def use_dict():
     while True:
-        word = get_word()
-        if word == '\end':
+        if (word := get_word()) == '\end':
             break
         else:
             print_def(word)
